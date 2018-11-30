@@ -172,7 +172,7 @@ fi
 echoStep Installing Insomnia REST client
 
 if [[ $CURRENT_YADM_CLASS = "server" ]]; then
-	echo "${YELLOW}We do not install GitKraken on servers${RESET}"
+	echo "${YELLOW}We do not install Insomnia REST client on servers${RESET}"
 else
 	if [ $(dpkg-query -W -f='${Status}' insomnia 2>/dev/null | grep -c "ok installed") -eq 0 ];
 	then
