@@ -74,14 +74,14 @@ fi
 
 echoStep Installing packages
 
-packages=(nano tree fizsh htop shutter jq)
+packages=(nano tree fizsh htop jq)
 
 if [[ $CURRENT_YADM_CLASS = "work" ]]; then
 	packages+=(filezilla evolution evolution-ews)
 fi
 
 if [ $CURRENT_YADM_CLASS = "work" ] || [ $CURRENT_YADM_CLASS = "home" ]; then
-	packages+=(apt-transport-https vlc)
+	packages+=(apt-transport-https vlc shutter)
 fi
 
 echo "${YELLOW}Updating package sources${RESET}"
