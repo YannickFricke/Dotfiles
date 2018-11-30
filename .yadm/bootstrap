@@ -1,0 +1,234 @@
+#####################################
+#       Some beautiful colors       #
+#####################################
+
+BLACK=`tput setaf 0`
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BLUE=`tput setaf 4`
+MAGENTA=`tput setaf 5`
+CYAN=`tput setaf 6`
+WHITE=`tput setaf 7`
+RESET=`tput sgr0`
+
+STEP=0
+
+#####################################
+#          Helper functions         #
+#####################################
+
+function isYADMClassSet {
+	CURRENT_YADM_CLASS=$(yadm config local.class)
+
+	if [[ $CURRENT_YADM_CLASS = "" ]]; then
+		return 0
+	fi
+
+	return 1
+}
+
+function echoStep {
+	STEP=$((STEP + 1))
+	echo ""
+	echo "Step $STEP: ${CYAN}$@${RESET}"
+	echo ""
+}
+
+function getLatestGitHubRelease {
+	curl --silent "https://api.github.com/repos/$1/releases" | jq -r "first(.[] | .assets[] | select(.name | endswith(\"$2\"))).browser_download_url"
+}
+
+#####################################
+#           Current script          #
+#####################################
+
+echo "${GREEN}Setting up personal environment${RESET}"
+
+echoStep Checking current YADM class
+
+isYADMClassSet
+
+if [[ $? -eq 0 ]]; then
+	read -p "Please set the YADM class (work/home/server): " newClass
+
+	yadm config local.class $newClass
+else
+	echo "${YELLOW}Current YADM class: ${GREEN}${CURRENT_YADM_CLASS}${RESET}"
+fi
+
+echoStep Add the current user as sudoer
+
+read -p "Add $USER as sudoer? (y/n): " addSudoer
+
+if [[ -n $addSudoer ]]; then
+	if [[ $addSudoer = "y" ]]; then
+		echo "Adding myself as sudoer"
+		echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+	else
+		echo "${YELLOW}Not going to add $USER as sudoer${RESET}"
+	fi
+else
+	echo "${YELLOW}Did not got any answer. Skipping step${RESET}"
+fi
+
+echoStep Installing packages
+
+packages=(nano tree fizsh htop shutter jq)
+
+if [[ $CURRENT_YADM_CLASS = "work" ]]; then
+	packages+=(filezilla evolution evolution-ews)
+fi
+
+if [ $CURRENT_YADM_CLASS = "work" ] || [ $CURRENT_YADM_CLASS = "home" ]; then
+	packages+=(apt-transport-https vlc)
+fi
+
+echo "${YELLOW}Updating package sources${RESET}"
+sudo apt-get update -qq 2&>1 > /dev/null
+echo "${GREEN}Updated successfully the package sources${RESET}"
+echo ""
+
+for package in ${packages[*]}
+do
+    if [ $(dpkg-query -W -f='${Status}' $package 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo "${RED}$package is not installed${RESET}"
+		sudo apt-get install -y -qq $package > /dev/null;
+		echo "${YELLOW}$package is now installed${RESET}"
+	else
+		echo "${YELLOW}$package is already installed${RESET}"
+	fi
+done
+
+echoStep Installing tmux plugin manager
+
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "${RED}tmux plugin manager is not installed. Installing it${RESET}"
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	echo "${GREEN}tmux plugin manager installed${RESET}"
+else
+	echo "${GREEN}tmux plugin manager is already downloaded${RESET}"
+fi
+
+if [[ $CURRENT_YADM_CLASS = "work" ]]; then
+	echoStep Installing Toggl because we are at work
+
+	if [[ ! -d "/opt/toggldesktop" ]]; then
+		echo "${YELLOW}Fetching latest Toggl release${RESET}"
+		latestRelease=$(getLatestGitHubRelease "toggl/toggldesktop" ".tar.gz")
+		echo "${GREEN}Found latest release${RESET}"
+
+		echo "${YELLOW}Downloading Toggl${RESET}"
+		togglFile=/tmp/toggl.tar.gz
+		curl --silent -L -o $togglFile $latestRelease
+		echo "${GREEN}Downloaded Toggl${RESET}"
+
+		echo "${YELLOW}Trying to unpack Toggl${RESET}"
+		tar xzf $togglFile
+		echo "${GREEN}Unpacked Toggl successfully${RESET}"
+
+		echo "${YELLOW}Trying to remove the downloaded file${RESET}"
+		rm $togglFile
+		echo "${GREEN}Removed downloaded file${RESET}"
+
+		echo "${YELLOW}Moving Toggl to the right directory${RESET}"
+		mv toggldesktop /opt/
+		echo "${GREEN}Moved Toggl successfully${RESET}"
+
+		echo "${YELLOW}Installing Toggl${RESET}"
+		ln -s /opt/toggldesktop/TogglDesktop $HOME/Schreibtisch/Toggl
+		echo "${GREEN}Successfully installed Toggl${RESET}"
+	else
+		echo "${YELLOW}Toggl is already installed${RESET}"	
+	fi
+fi
+
+echoStep Installing GitKraken
+
+if [[ $CURRENT_YADM_CLASS = "server" ]]; then
+	echo "${YELLOW}We do not install GitKraken on servers${RESET}"
+else
+	if [ $(dpkg-query -W -f='${Status}' gitkraken 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		gitkrakenFile=/tmp/gitkraken.deb
+		
+		echo "${YELLOW}Downloading latest GitKraken .deb file${RESET}"
+		curl --silent -L -o $gitkrakenFile https://www.gitkraken.com/download/linux-deb
+		echo "${GREEN}Downloaded latest GitKraken .deb file${RESET}"
+
+		echo "${YELLOW}Installing GitKraken${RESET}"
+		sudo dpkg -i $gitkrakenFile
+		echo "${GREEN}GitKraken successfully installed${RESET}"
+
+		echo "${YELLOW}Trying to remove the downloaded file${RESET}"
+		rm $gitkrakenFile
+		echo "${GREEN}Downloaded file successfully removed${RESET}"
+	else
+		echo "${YELLOW}GitKraken is already installed${RESET}"
+	fi	
+fi
+
+echoStep Installing Insomnia REST client
+
+if [[ $CURRENT_YADM_CLASS = "server" ]]; then
+	echo "${YELLOW}We do not install GitKraken on servers${RESET}"
+else
+	if [ $(dpkg-query -W -f='${Status}' insomnia 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo "${YELLOW}Adding Insomnia package source${RESET}"
+		echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+		echo "${GREEN}Added Insomnia package source${RESET}"
+
+		echo "${YELLOW}Fetching and installing public repository key${RESET}"
+		wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+		echo "${GREEN}Fetched and installed the key successfully${RESET}"
+
+		echo "${YELLOW}Updating the package sources and installing Insomnia REST client${RESET}"
+		sudo apt-get update -qq 2&>1 > /dev/null
+		sudo apt-get install -y -qq insomnia > /dev/null
+		echo "${GREEN}Successfully installed Insomnia REST client${RESET}"
+	else
+		echo "${YELLOW}Insomnia REST client is already installed${RESET}"
+	fi	
+fi
+
+echoStep Installing Sublime Text
+
+if [[ $CURRENT_YADM_CLASS = "server" ]]; then
+	echo "${YELLOW}We do not install Sublime Text on servers${RESET}"
+else
+	if [ $(dpkg-query -W -f='${Status}' sublime-text 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo "${YELLOW}Adding Sublime Text package source${RESET}"
+		echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+		echo "${GREEN}Added Sublime Text package source${RESET}"
+
+		echo "${YELLOW}Updating the package sources and installing Sublime Text${RESET}"
+		sudo apt-get update -qq 2&>1 > /dev/null
+		sudo apt-get install -y -qq sublime-text > /dev/null
+		echo "${GREEN}Successfully installed Sublime Text${RESET}"
+	else
+		echo "${YELLOW}Sublime Text is already installed${RESET}"
+	fi	
+fi
+
+echoStep Installing KeePassXC
+
+if [[ $CURRENT_YADM_CLASS = "server" ]]; then
+	echo "${YELLOW}We do not install KeePassXC on servers${RESET}"
+else
+	if [ $(dpkg-query -W -f='${Status}' keepassxc 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo "${YELLOW}Adding KeePassXC package source${RESET}"
+		sudo add-apt-repository -y ppa:phoerious/keepassxc 2&>1 > /dev/null
+		echo "${GREEN}Added KeePassXC package source${RESET}"
+
+		echo "${YELLOW}Updating the package sources and installing KeePassXC${RESET}"
+		sudo apt-get update -qq 2&>1 > /dev/null
+		sudo apt-get install -y -qq keepassxc > /dev/null
+		echo "${GREEN}Successfully installed KeePassXC${RESET}"
+	else
+		echo "${YELLOW}KeePassXC is already installed${RESET}"
+	fi	
+fi
