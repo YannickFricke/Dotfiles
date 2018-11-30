@@ -95,7 +95,7 @@ do
 	then
 		echo "${RED}$package is not installed${RESET}"
 		sudo apt-get install -y -qq $package > /dev/null;
-		echo "${YELLOW}$package is now installed${RESET}"
+		echo "${GREEN}$package is now installed${RESET}"
 	else
 		echo "${YELLOW}$package is already installed${RESET}"
 	fi
@@ -108,7 +108,7 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	echo "${GREEN}tmux plugin manager installed${RESET}"
 else
-	echo "${GREEN}tmux plugin manager is already downloaded${RESET}"
+	echo "${YELLOW}tmux plugin manager is already installed${RESET}"
 fi
 
 if [[ $CURRENT_YADM_CLASS = "work" ]]; then
