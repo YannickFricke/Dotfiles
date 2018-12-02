@@ -232,3 +232,26 @@ else
 		echo "${YELLOW}KeePassXC is already installed${RESET}"
 	fi	
 fi
+
+echoStep Installing Yarn package manager
+
+if [[ $CURRENT_YADM_CLASS = "server" ]]; then
+	echo "${YELLOW}We do not install Yarn automatically on servers${RESET}"
+else
+	if [ $(dpkg-query -W -f='${Status}' yarn 2>/dev/null | grep -c "ok installed") -eq 0 ];
+	then
+		echo "${YELLOW}Installing Yarn${RESET}"
+		curl -o- -L --silent https://yarnpkg.com/install.sh | bash 2&>1
+		echo "${GREEN}Yarn successfully installed${RESET}"
+
+		echo ""
+
+		echo "${YELLOW}Installing global Yarn dependencies${RESET}"
+		cd $HOME/.config/yarn/global
+		yarn install > /dev/null
+		cd $HOME
+		echo "${GREEN}Installed global Yarn dependencies${RESET}"
+	else
+		echo "${YELLOW}Yarn is already installed${RESET}"
+	fi	
+fi
