@@ -1,4 +1,4 @@
-source . ./secrets.sh
+source $HOME/secrets.sh
 
 # Disable auto naming of windows
 DISABLE_AUTO_TITLE="true"
