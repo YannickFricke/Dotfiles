@@ -1,3 +1,8 @@
+source . ./secrets.sh
+
+# Disable auto naming of windows
+DISABLE_AUTO_TITLE="true"
+
 # N (node version manager)
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
@@ -23,6 +28,7 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:1
 zplug "hlissner/zsh-autopair", defer:2
 zplug "YannickFricke/NodeAliases", use:"aliases.sh"
+zplug "code-stats/code-stats-zsh", from:gitlab, use:"codestats.plugin.zsh"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -43,6 +49,8 @@ else
   export EDITOR='nano'
 fi
 
+# Overwrite aliases
+alias gc="git commit -v -S"
 alias ls="exa -la"
 alias tis="tig status"
 alias dc="docker-compose"
