@@ -1,3 +1,4 @@
 bind status a !?git commit --amend
 bind status P !?git push
 bind refs n !@git branch "%(prompt Enter branch name: )"
+bind status S !?git stash save --keep-index %(prompt)
