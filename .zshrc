@@ -55,6 +55,13 @@ alias ls="exa -la"
 alias tis="tig status"
 alias dc="docker-compose"
 
+# Path extensions
+
+# Global composer packages
+if [ -d "$HOME/.config/composer/vendor/bin" ]; then
+  export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
+
 # Functions
 
 # Create and enter directory
