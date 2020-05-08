@@ -1,3 +1,4 @@
+bind status C !/home/{{ yadm.user }}/bin/commit.sh
 bind status a !?git commit --amend
 bind status P !git push
 bind refs n !@git branch "%(prompt Enter branch name: )"
