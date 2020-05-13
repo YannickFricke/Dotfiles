@@ -79,6 +79,14 @@ tnscd ()
 # Load Linuxbrew
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
+# Load zsh completions from homebrew
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # HSTR configuration - add this to ~/.zshrc
 alias hh=hstr                    # hh to be alias for hstr
 setopt histignorespace           # skip cmds w/ leading space from history
