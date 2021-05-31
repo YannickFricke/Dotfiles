@@ -1,0 +1,4 @@
+secrets.sh
+!.ssh/*.pub
+!.ssh/known_hosts
+.ssh/*
