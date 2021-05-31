@@ -1,0 +1,7 @@
+require 'yannickfricke.keybinds.common'
+require 'yannickfricke.keybinds.compe'
+require 'yannickfricke.keybinds.code_navigation'
+require 'yannickfricke.keybinds.git_worktree'
+require 'yannickfricke.keybinds.nvim_tree'
+require 'yannickfricke.keybinds.telescope'
+require 'yannickfricke.keybinds.undotree'
