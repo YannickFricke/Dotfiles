@@ -53,7 +53,7 @@ fi
 
 # Overwrite aliases
 alias gc="git commit -v -S"
-alias ls="exa -la"
+alias ls="lsd -la"
 alias tis="tig status"
 alias dc="docker-compose"
 alias watch="watch -n 1"
