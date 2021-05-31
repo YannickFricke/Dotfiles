@@ -13,7 +13,7 @@ local packer = require'packer'
 local util = require'packer.util'
 
 packer.init({
-  package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack'),
+	package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack'),
 	git = {
 		clone_timeout = 600
 	}
@@ -23,7 +23,7 @@ packer.init({
 vim.cmd [[packadd packer.nvim]]
 
 return packer.startup(function()
-  local use = packer.use
+	local use = packer.use
 
 	-- Let packer manage itself
 	use { 'wbthomason/packer.nvim', opt = true }
@@ -75,7 +75,7 @@ return packer.startup(function()
 	use {
 		"folke/lsp-trouble.nvim",
     config = function()
-      require("trouble").setup {
+    	require("trouble").setup {
 				auto_preview = false,
 				auto_fold = true
 			}
@@ -101,7 +101,7 @@ return packer.startup(function()
 	-- Automatically close pairs
 	use 'jiangmiao/auto-pairs'
 
-  -- Treesitter offers better syntax highlighting support
+	-- Treesitter offers better syntax highlighting support
 	use {
 			'nvim-treesitter/nvim-treesitter',
 			run = ":TSUpdate",
@@ -110,11 +110,11 @@ return packer.startup(function()
 			}
 	}
 
-  -- Language packs for nvim
-  use 'sheerun/vim-polyglot'
+	-- Language packs for nvim
+	use 'sheerun/vim-polyglot'
 
-  -- UndoTree offers a visualization of recent changes
-  use 'mbbill/undotree'
+	-- UndoTree offers a visualization of recent changes
+	use 'mbbill/undotree'
 
 	-- Distraction free mode
 	use {
@@ -153,7 +153,7 @@ return packer.startup(function()
 
 	-- WhichKey displays a popup with possible key bindings of the command you started typing
 	use {
-    "folke/which-key.nvim",
+	"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup()
 		end
@@ -171,7 +171,7 @@ return packer.startup(function()
 	-- TODO: Check if needed
 
 	use 'leafgarland/typescript-vim'
-  use 'pangloss/vim-javascript'
-  use 'peitalin/vim-jsx-typescript'
-  use {'prettier/vim-prettier', run = 'yarn install' }
+	use 'pangloss/vim-javascript'
+	use 'peitalin/vim-jsx-typescript'
+	use {'prettier/vim-prettier', run = 'yarn install' }
 end)

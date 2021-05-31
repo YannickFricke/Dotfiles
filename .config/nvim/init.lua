@@ -41,4 +41,6 @@ wo.wrap = false
 
 vim.g.Omnisharp_server_stdio = 0
 
+vim.cmd[[set shortmess+=c]]
+
 require 'yannickfricke'
