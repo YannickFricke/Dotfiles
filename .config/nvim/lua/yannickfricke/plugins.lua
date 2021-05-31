@@ -159,6 +159,9 @@ return packer.startup(function()
 		end
 	}
 
+	-- Comment out lines quickly
+	use 'tpope/vim-commentary'
+
 	-- Languages related stuff
 
 	-- Codi is an interactive scratchpad
