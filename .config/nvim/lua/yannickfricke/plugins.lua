@@ -82,6 +82,9 @@ return packer.startup(function()
 		end
 	}
 
+	-- Show line indentation
+	use 'Yggdroot/indentLine'
+
 	-- A better start screen for (N)VIM
 	use 'mhinz/vim-startify'
 
