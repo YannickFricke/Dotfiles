@@ -114,7 +114,12 @@ return packer.startup(function()
   use 'mbbill/undotree'
 
 	-- Distraction free mode
-	use 'junegunn/goyo.vim'
+	use {
+		'junegunn/goyo.vim',
+
+		-- Highlight single blocks of texts for more focus
+		requires = {{"junegunn/limelight.vim"}}
+	}
 
 	-- Mark trailing whitespaces as errors
 	use 'ntpeters/vim-better-whitespace'
