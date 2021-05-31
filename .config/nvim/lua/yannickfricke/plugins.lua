@@ -157,6 +157,9 @@ return packer.startup(function()
 
 	-- Languages related stuff
 
+	-- Codi is an interactive scratchpad
+	use 'metakirby5/codi.vim'
+
 	-- JavaScript / TypeScript related stuff
 	-- TODO: Check if needed
 

@@ -104,6 +104,20 @@ runCommandInSubdirs() {
   	find . -maxdepth 1 -mindepth 1 -type d -print0 | xargs -0 -I{} zsh -c 'cd "{}" && echo "{}" && echo "$('$THE_COMMAND')" && echo -e'
 }
 
+# Codi - the interactive scratchpad
+# Usage: codi [filetype] [filename]
+codi() {
+  local syntax="${1:-javascript}"
+  shift
+  nvim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
+
 # Load Linuxbrew
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
