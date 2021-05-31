@@ -32,14 +32,14 @@ zplug "YannickFricke/NodeAliases", use:"aliases.sh"
 zplug "code-stats/code-stats-zsh", from:gitlab, use:"codestats.plugin.zsh"
 zplug "jerguslejko/zsh-symfony-completion", use:"symfony-console.plugin.zsh"
 
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
     fi
 fi
 
-zplug load --verbose
+zplug load
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -137,8 +137,6 @@ alias hh=hstr                    # hh to be alias for hstr
 setopt histignorespace           # skip cmds w/ leading space from history
 export HSTR_CONFIG=hicolor       # get more colors
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
-
-clear
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
