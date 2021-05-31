@@ -1,5 +1,7 @@
+local api = vim.api
+
 local key_mapper = function(mode, key, result)
-  vim.api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true, expr = true})
+  api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true, expr = true})
 end
 
 key_mapper('i', '<C-Space>', 'compe#complete()')
@@ -8,12 +10,11 @@ key_mapper('i', '<C-e>', 'compe#close(\'<C-e>\')')
 key_mapper('i', '<C-f>', 'compe#scroll({\'delta\': +4})')
 key_mapper('i', '<C-d>', 'compe#scroll({\'delta\': -4})')
 
-
-vim.api.nvim_set_keymap('i', '<Tab>', 'vsnip#jumpable(1) ? \'<Plug>(vsnip-jump-next)\' : \'<Tab>\'', {expr = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'vsnip#jumpable(-1) ? \'<Plug>(vsnip-jump-prev)\' : \'<S-Tab>\'', {expr = true})
+api.nvim_set_keymap('i', '<Tab>', 'vsnip#jumpable(1) ? \'<Plug>(vsnip-jump-next)\' : \'<Tab>\'', {expr = true})
+api.nvim_set_keymap('i', '<S-Tab>', 'vsnip#jumpable(-1) ? \'<Plug>(vsnip-jump-prev)\' : \'<S-Tab>\'', {expr = true})
 
 local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
+  return api.nvim_replace_termcodes(str, true, true, true)
 end
 
 local check_back_space = function()
@@ -50,7 +51,7 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
