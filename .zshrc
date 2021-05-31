@@ -62,8 +62,6 @@ alias vim="nvim"
 alias update="sudo aptitude update && sudo aptitude upgrade -y"
 alias yadf="yarn add -D -W"
 
-alias nemo="pcmanfm"
-alias nautilus="pcmanfm"
 alias open="xdg-open"
 alias pwc="pwd | xclip -sel clip"
 
