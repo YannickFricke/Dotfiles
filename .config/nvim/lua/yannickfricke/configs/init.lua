@@ -1,4 +1,3 @@
-require 'yannickfricke.configs.ale'
 require 'yannickfricke.configs.common'
 require 'yannickfricke.configs.compe'
 require 'yannickfricke.configs.lspconfig'

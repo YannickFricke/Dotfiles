@@ -125,10 +125,6 @@ return packer.startup(function()
 	-- 	rocks = { 'lua-requests' }
 	-- }
 
-	-- ALE (Asynchronous Lint Engine) provides linting feedback while you type for several linters (eslint, prettier, autopep8, etc.)
-	-- ALE also comes with LSP (Language Server Protocol) support
-	use 'dense-analysis/ale'
-
 	-- GIT related stuff
 
 	-- Displays git line info (added, modified)
