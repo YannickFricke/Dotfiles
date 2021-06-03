@@ -1,0 +1,45 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "editor.mouseWheelZoom": true,
+    "editor.insertSpaces": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "path-intellisense.extensionOnImport": true,
+    "path-intellisense.autoSlashAfterDirectory": true,
+
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.rulers": [80],
+
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    },
+
+    "terminal.integrated.defaultProfile.windows": "",
+    "terminal.external.osxExec": "Windows.Terminal.Wsl",
+    "editor.multiCursorModifier": "alt",
+
+    "javascript.updateImportsOnFileMove.enabled": "always",
+
+    "auto-rename-tag.activationOnLanguage": [
+        "html",
+        "xml",
+        "php",
+        "javascript",
+        "javascriptreact"
+    ],
+    "terminal.integrated.tabs.enabled": true,
+}
