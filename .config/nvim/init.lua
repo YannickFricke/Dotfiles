@@ -1,9 +1,9 @@
 utils = require('yannickfricke/utils')
 
+print("Using Yannick Fricke's NVIM "..utils.SUPPORTED_VERSION.." configuration")
+
 local vim = vim
 
 vim.g.mapleader = ' '
-
-print("Using Yannick Frickes NVIM "..utils.SUPPORTED_VERSION.." configuration")
 
 require('yannickfricke')
