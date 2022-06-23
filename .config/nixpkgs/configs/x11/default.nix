@@ -1,0 +1,3 @@
+{
+  xResourcesPath = ./.Xresources;
+}

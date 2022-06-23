@@ -1,0 +1,6 @@
+bind status C !/home/yfr/bin/commit.sh
+bind status a !?git commit --amend
+bind status P !git push
+bind refs n !@git branch "%(prompt Enter branch name: )"
+bind refs P !git push %(remote) %(branch)
+bind status S !?git stash save --keep-index %(prompt)

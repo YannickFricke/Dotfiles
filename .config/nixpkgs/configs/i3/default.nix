@@ -1,0 +1,3 @@
+{
+  i3ConfigPath = ./config;
+}

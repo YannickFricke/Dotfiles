@@ -1,0 +1,3 @@
+{
+  dc = "docker compose";
+}

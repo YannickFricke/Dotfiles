@@ -1,0 +1,3 @@
+{
+  ta = "tmux attach";
+}
