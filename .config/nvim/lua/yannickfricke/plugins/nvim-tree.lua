@@ -18,4 +18,3 @@ require("nvim-tree").setup({
 	},
 })
 
-utils.key_mapper('n', '<leader>ne',   ':NvimTreeToggle<CR>')
