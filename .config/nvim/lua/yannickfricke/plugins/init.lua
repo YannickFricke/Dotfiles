@@ -1,6 +1,14 @@
 local packer_bootstrap = utils.InstallPacker()
 
 require('packer').startup(function(use)
+    -- Use the monokai color scheme
+    use {
+        'tanvirtin/monokai.nvim',
+        config=function()
+            require('monokai').setup {}
+        end
+    }
+
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
