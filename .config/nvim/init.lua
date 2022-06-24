@@ -32,6 +32,7 @@ o.hidden = true
 o.completeopt = 'menuone,noinsert,noselect'
 bo.autoindent = true
 bo.smartindent = true
+o.mouse = 'a'
 
 -- 4 tabs are the best!
 -- Change my mind
