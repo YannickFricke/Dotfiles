@@ -1,0 +1,13 @@
+local utils = require('yannickfricke.utils')
+
+utils.key_mapper('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+utils.key_mapper('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
+utils.key_mapper('n', 'gi', ':lua require"telescope.builtin".lsp_implementations()<CR>')
+utils.key_mapper('n', 'gw', ':lua require"telescope.builtin".document_symbols()<CR>')
+utils.key_mapper('n', 'gW', ':lua require"telescope.builtin".workspace_symbols()<CR>')
+utils.key_mapper('n', 'gr', ':lua require"telescope.builtin".lsp_references()<CR>')
+utils.key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
+utils.key_mapper('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+utils.key_mapper('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
+utils.key_mapper('n', '<leader>af', ':lua vim.lsp.buf.code_action()<CR>')
+utils.key_mapper('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
