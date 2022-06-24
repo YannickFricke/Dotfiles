@@ -43,6 +43,9 @@ require('packer').startup(function(use)
         requires = "nvim-lua/plenary.nvim"
     }
 
+    -- Show small images (pictograms) in the code completions
+    use 'onsails/lspkind.nvim'
+
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/telescope.nvim'

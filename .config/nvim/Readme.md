@@ -14,6 +14,7 @@ LUA package manager: [packer](https://github.com/wbthomason/packer.nvim)
 | vim-easy-align     | Align quickly source code                                  | https://github.com/junegunn/vim-easy-align         |
 | nvim-lsp-installer | Automates the installation of language servers             | https://github.com/williamboman/nvim-lsp-installer |
 | diaglist.nvim      | Show LSP diagnostics in a separate buffer                  | https://github.com/onsails/diaglist.nvim           |
+| lspkind.nvim       | Show small images (pictograms in nvim-cmp)                 | https://github.com/onsails/lspkind.nvim            |
 
 ## Keybinds
 

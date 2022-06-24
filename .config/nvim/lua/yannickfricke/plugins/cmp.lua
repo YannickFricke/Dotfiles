@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
@@ -22,7 +23,10 @@ cmp.setup({
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'cmp_tabnine' },
-    })
+    }),
+    formatting = {
+        format = lspkind.cmp_format()
+    }
 })
 
 -- Set configuration for specific filetype.
