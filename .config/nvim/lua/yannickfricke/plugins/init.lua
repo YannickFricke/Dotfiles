@@ -9,6 +9,7 @@ require('packer').startup(function(use)
         end
     }
 
+    -- A filetree written in LUA
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -17,6 +18,7 @@ require('packer').startup(function(use)
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
 	}
 
+    -- Easily align source code
     use { 'junegunn/vim-easy-align' }
 
   -- Automatically set up your configuration after cloning packer.nvim
