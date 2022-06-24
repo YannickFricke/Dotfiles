@@ -59,6 +59,23 @@ require('packer').startup(function(use)
 
     use 'onsails/diaglist.nvim'
 
+    -- Work with GitHub in a fancy way
+    use {
+        'pwntester/octo.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = function()
+            require "octo".setup()
+        end
+    }
+
+    use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
+
+    use 'https://gitlab.com/yorickpeterse/nvim-pqf'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
@@ -66,9 +83,12 @@ require('packer').startup(function(use)
     end
 end)
 
+require('yannickfricke.plugins.bufferline')
 require('yannickfricke.plugins.cmp')
 require('yannickfricke.plugins.diaglist')
 require('yannickfricke.plugins.lsp')
 require('yannickfricke.plugins.nvim-tree')
+require('yannickfricke.plugins.pqf')
 require('yannickfricke.plugins.tabnine')
 require('yannickfricke.plugins.treesitter')
+require('yannickfricke.plugins.octo')
