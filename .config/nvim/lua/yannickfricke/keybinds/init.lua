@@ -1,4 +1,10 @@
--- Load and set the keybidn mappings for EasyAlign
+-- Load and set my personal keybinds
+require('yannickfricke.keybinds.general')
+
+-- Load and set the keybind mappings for Diaglist
+require('yannickfricke.keybinds.diaglist')
+
+-- Load and set the keybind mappings for EasyAlign
 require('yannickfricke.keybinds.easy-align')
 
 -- Load and set the keybind mappings for nvim-tree
