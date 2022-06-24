@@ -8,12 +8,13 @@ local vim = vim
 -- Set the leader key to space
 vim.g.mapleader = ' '
 
+-- o == option
 local o = vim.o
 
--- bo == buffer options
+-- bo == buffer-local options
 local bo = vim.bo
 
--- wo == window options
+-- wo == window-local options
 local wo = vim.wo
 
 o.termguicolors = true
