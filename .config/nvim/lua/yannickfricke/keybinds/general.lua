@@ -7,3 +7,6 @@ utils.key_mapper('n', '<leader>k', ':wincmd k<CR>')
 utils.key_mapper('n', '<leader>l', ':wincmd l<CR>')
 utils.key_mapper('n', '<leader>+', ':vertical resize +5<CR>')
 utils.key_mapper('n', '<leader>-', ':vertical resize -5<CR>')
+
+-- Buffer related mappings
+utils.key_mapper('n', '<leader><leader>', ':b#<CR>')
