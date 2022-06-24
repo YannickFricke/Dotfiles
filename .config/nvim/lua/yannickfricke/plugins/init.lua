@@ -50,6 +50,8 @@ require('packer').startup(function(use)
 
     use 'nvim-treesitter/nvim-treesitter'
 
+    use 'onsails/diaglist.nvim'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
@@ -58,6 +60,7 @@ require('packer').startup(function(use)
 end)
 
 require('yannickfricke.plugins.cmp')
+require('yannickfricke.plugins.diaglist')
 require('yannickfricke.plugins.lsp')
 require('yannickfricke.plugins.nvim-tree')
 require('yannickfricke.plugins.tabnine')
