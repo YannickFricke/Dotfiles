@@ -38,6 +38,10 @@ require('packer').startup(function(use)
         run = './install.sh',
         requires = 'hrsh7th/nvim-cmp'
     }
+    use {
+        "petertriho/cmp-git",
+        requires = "nvim-lua/plenary.nvim"
+    }
 
     use 'nvim-lua/lsp-status.nvim'
 
