@@ -48,6 +48,8 @@ require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'lukas-reineke/lsp-format.nvim'
 
+    use 'nvim-treesitter/nvim-treesitter'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
@@ -59,3 +61,4 @@ require('yannickfricke.plugins.cmp')
 require('yannickfricke.plugins.lsp')
 require('yannickfricke.plugins.nvim-tree')
 require('yannickfricke.plugins.tabnine')
+require('yannickfricke.plugins.treesitter')
