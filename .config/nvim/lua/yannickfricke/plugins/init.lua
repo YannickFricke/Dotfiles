@@ -43,6 +43,10 @@ require('packer').startup(function(use)
         requires = "nvim-lua/plenary.nvim"
     }
 
+    use 'nvim-lua/popup.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-lua/telescope.nvim'
+
     use 'nvim-lua/lsp-status.nvim'
 
     use 'L3MON4D3/LuaSnip'
