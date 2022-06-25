@@ -76,6 +76,8 @@ require('packer').startup(function(use)
 
     use 'https://gitlab.com/yorickpeterse/nvim-pqf'
 
+    use 'jiangmiao/auto-pairs'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

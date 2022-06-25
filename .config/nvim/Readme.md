@@ -18,6 +18,7 @@ LUA package manager: [packer](https://github.com/wbthomason/packer.nvim)
 | octo.nvim          | Interact with GitHub in a nice way                         | https://github.com/pwntester/octo.nvim             |
 | bufferline.nvim    | Display file tabs on the top like every other editor       | https://github.com/akinsho/bufferline.nvim         |
 | nvim-pqf           | Prettier quickfix/location list windows for NeoVim         | https://gitlab.com/yorickpeterse/nvim-pqf          |
+| auto-pairs         | Automatically inserts closing brackets                     | https://github.com/jiangmiao/auto-pairs            |
 
 ## Keybinds
 
