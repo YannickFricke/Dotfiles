@@ -19,6 +19,9 @@ LUA package manager: [packer](https://github.com/wbthomason/packer.nvim)
 | bufferline.nvim    | Display file tabs on the top like every other editor       | https://github.com/akinsho/bufferline.nvim         |
 | nvim-pqf           | Prettier quickfix/location list windows for NeoVim         | https://gitlab.com/yorickpeterse/nvim-pqf          |
 | auto-pairs         | Automatically inserts closing brackets                     | https://github.com/jiangmiao/auto-pairs            |
+| LuaSnip            | Management of snippets                                     | https://github.com/L3MON4D3/LuaSnip                |
+| lsp-status.nvim    | Obtain LSP-specific elements for your status line          | https://github.com/nvim-lua/lsp-status.nvim        |
+| lsp-format.nvim    | Formats the buffer on save using the LSP                   | https://github.com/lukas-reineke/lsp-format.nvim   |
 
 ## Keybinds
 
